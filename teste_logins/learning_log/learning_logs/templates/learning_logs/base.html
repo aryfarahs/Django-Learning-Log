@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Título e Coisarada</title>
+</head>
+<body>
+    <header>
+        <a href="{% url 'index' %}"><h1>Learning Log</a>  - 
+        <a href="{% url 'topics' %}">Tópicos</h1></a>
+        {% if user.is_authenticated %}
+            <h3>Olá, {{ user.username }}</h3>
+        {% else %}
+            <a href="{% url 'login' %}"><h3>Entrar</h3></a>
+        {% endif %}
+    </header>
+
+    {% block content %}{% endblock content %}
+
+    <footer style="margin-top: 600px; background-color: beige;">
+        TESTE FOOTER N SEI OQ
+    </footer>
+</body>
+</html>

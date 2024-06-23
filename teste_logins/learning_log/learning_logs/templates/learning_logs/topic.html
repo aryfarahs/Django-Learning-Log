@@ -1,0 +1,26 @@
+{% extends "learning_logs/base.html" %}
+    
+{% block content %}
+    <main>
+        <h3>Tópico: {{ topic }}</h3>
+
+        <h4>Anotações:</h4>
+        
+        <a href="{% url 'new_entry' topic.id %}"><h4>Adicionar Anotação</h4></a>
+        
+        <ul>
+            {% for entry in entries %}
+                <li>
+                    <p>Data: {{ entry.date_added | date:'M d, Y H:i'}}</p>
+                    <p>{{ entry.text | linebreaks }}</p>
+                    <a href="{% url 'edit_entry' entry.id %}"><h4>Editar Tópico</h4></a>
+                </li>
+            {% empty %}
+                <li>
+                    Não existem assuntos para este tópico
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+{% endblock content %}
+
